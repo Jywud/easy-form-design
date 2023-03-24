@@ -1,4 +1,4 @@
-import EasyFormDesign from './FormDesign';
-import EasyFormBuild from './FormBuild';
+import EasyFormDesign from './EasyFormDesign';
+import EasyFormBuild from './EasyFormBuild';
 
 export { EasyFormDesign, EasyFormBuild };

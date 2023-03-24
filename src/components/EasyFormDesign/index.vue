@@ -82,7 +82,7 @@ const getId = () =>
     .toString()
     .substring(5)}`;
 export default {
-  name: 'FormDesign',
+  name: 'EasyFormDesign',
   components: { draggable, previewForm },
   data() {
     return {

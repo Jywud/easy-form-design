@@ -6,17 +6,17 @@
       :close-on-click-modal="false"
       width="30%"
     >
-      <FormBuild ref="formBuild" @validateSuccess="validateSuccess"></FormBuild>
+      <EasyFormBuild ref="formBuild" @validateSuccess="validateSuccess"></EasyFormBuild>
     </el-dialog>
   </div>
 </template>
 
 <script>
-import FormBuild from '../FormBuild/index.vue';
+import EasyFormBuild from '../EasyFormBuild/index.vue';
 
 export default {
   name: 'previewForm',
-  components: { FormBuild },
+  components: { EasyFormBuild },
   data() {
     return {
       dialogVisible: false,

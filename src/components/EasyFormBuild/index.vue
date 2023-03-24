@@ -25,7 +25,7 @@
 import componentMap from '../componentMap';
 
 export default {
-  name: 'FormBuild',
+  name: 'EasyFormBuild',
   data() {
     return {
       formJsonList: [],
