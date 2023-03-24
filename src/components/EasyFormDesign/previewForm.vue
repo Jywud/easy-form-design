@@ -33,8 +33,3 @@ export default {
   },
 };
 </script>
-
-<style lang="less" scoped>
-.form-build-view {
-}
-</style>
