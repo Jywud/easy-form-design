@@ -1,21 +1,17 @@
 {
   "name": "easy-form-design",
-  "version": "0.1.0",
-  "files": ["lib"],
+  "version": "0.1.2",
+  "files": [
+    "lib"
+  ],
   "main": "lib/easyFormDesign.common.js",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build --target lib --name easyFormDesign --dest lib src/components/index.js",
     "lint": "vue-cli-service lint"
   },
-  "dependencies": {
-    "core-js": "^3.8.3"   
-  },
-  "peerDependencies": {
-    "element-ui": "^2.15.13",
-    "vue": "^2.6.14",
-    "vuedraggable": "^2.24.3"
-  },
+  "dependencies": {},
+  "peerDependencies": {},
   "devDependencies": {
     "@babel/core": "^7.12.16",
     "@babel/eslint-parser": "^7.12.16",
@@ -23,12 +19,16 @@
     "@vue/cli-plugin-eslint": "~5.0.0",
     "@vue/cli-service": "~5.0.0",
     "@vue/eslint-config-airbnb": "^6.0.0",
+    "core-js": "^3.29.1",
+    "element-ui": "^2.15.13",
     "eslint": "^7.32.0",
     "eslint-plugin-import": "^2.25.3",
     "eslint-plugin-vue": "^8.0.3",
     "eslint-plugin-vuejs-accessibility": "^1.1.0",
     "less": "^3.13.1",
     "less-loader": "^6.2.0",
-    "vue-template-compiler": "^2.6.14"
+    "vue": "^2.7.14",
+    "vue-template-compiler": "^2.6.14",
+    "vuedraggable": "^2.24.3"
   }
 }
