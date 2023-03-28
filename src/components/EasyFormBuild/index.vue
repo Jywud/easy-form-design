@@ -35,7 +35,7 @@ export default {
   },
   methods: {
     /* 初始化表单-父组件调用 */
-    initDefaultForm(data) {
+    initForm(data) {
       this.formJsonList = data.map((comp) => ({
         ...comp,
         viewComponent: componentMap[comp.type]().viewComponent,
@@ -47,11 +47,18 @@ export default {
       this.formJsonList.forEach((comp) => {
         // 设置表单默认值
         if (comp.defaultValue !== undefined && comp.defaultValue !== '') {
-          // eslint-disable-next-line operator-linebreak
-          this.ruleForm[comp.uuid] =
-            typeof comp.defaultValue === 'object'
-              ? JSON.parse(JSON.stringify(comp.defaultValue))
-              : comp.defaultValue;
+          try {
+            // eslint-disable-next-line operator-linebreak
+            this.$set(
+              this.ruleForm,
+              comp.uuid,
+              typeof comp.defaultValue === 'object'
+                ? JSON.parse(JSON.stringify(comp.defaultValue))
+                : comp.defaultValue
+            );
+          } catch (error) {
+            console.error(error);
+          }
         }
 
         // 设置表单规则
@@ -76,7 +83,8 @@ export default {
 
       Object.keys(this.ruleForm).forEach((key) => {
         if (data[key]) {
-          this.ruleForm[key] = data[key];
+          this.$set(this.ruleForm, key, data[key]);
+          // this.ruleForm[key] = data[key];
         }
       });
     },
@@ -112,5 +120,3 @@ export default {
   },
 };
 </script>
-
-<style lang="less" scoped></style>

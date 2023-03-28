@@ -1,5 +1,11 @@
 <template>
-  <el-input v-model="compVal" :disabled="disable" :placeholder="compData.placeholder" />
+  <el-input
+    v-model="compVal"
+    :disabled="disable"
+    :placeholder="compData.placeholder"
+    :maxlength="compData.maxlength"
+    :readonly="readonly"
+  />
 </template>
 
 <script>
@@ -31,8 +37,11 @@ export default {
     return {};
   },
   computed: {
+    readonly() {
+      return this.isPreview;
+    },
     disable() {
-      return this.compData.disabled || this.isPreview;
+      return this.compData.disabled;
     },
     compVal: {
       get() {

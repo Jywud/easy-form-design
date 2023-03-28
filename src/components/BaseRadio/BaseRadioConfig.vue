@@ -1,16 +1,20 @@
 <template>
   <div>
     <div class="mt10">
-      <div class="mb10 fontw">标题</div>
+      <div class="mb10 fw600">标题：</div>
       <el-input v-model="activeComp.title" />
     </div>
-    <div>
+    <div class="mt10">
+      <div class="fontw">组件唯一值（uuid）：</div>
+      <el-input v-model="activeComp.uuid" disabled />
+    </div>
+    <div class="mt10">
       <el-checkbox v-model="activeComp.required" label="是否必填" />
       <el-checkbox v-model="activeComp.disabled" label="是否禁用" />
     </div>
     <div class="options-panel mt10">
-      <p class="mb10 fontw">选项配置</p>
-      <div class="tip-box">请勿使用相同的选项名和选项值</div>
+      <p class="mb10 fw600">选项配置：</p>
+      <div class="tip-box">请勿使用相同的选项值!</div>
       <div class="mb10" v-for="(item, index) in activeComp.options" :key="item.value">
         选项名:<el-input v-model="item.name"></el-input> 选项值:<el-input
           v-model="item.value"
@@ -20,6 +24,14 @@
         >
       </div>
       <el-button type="primary" @click="addOption">添加选项</el-button>
+    </div>
+    <div class="mt10">
+      <div class="fontw">默认值：</div>
+      <el-radio-group v-model="activeComp.defaultValue">
+        <el-radio :label="item.value" v-for="item in activeComp.options" :key="item.value">{{
+          item.name
+        }}</el-radio>
+      </el-radio-group>
     </div>
   </div>
 </template>
@@ -59,7 +71,7 @@ export default {
   margin-left: 10px;
 }
 
-.fontw {
+.fw600 {
   font-weight: 600;
 }
 .tip-box {

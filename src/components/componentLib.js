@@ -2,4 +2,12 @@
 import BaseInput from './BaseInput';
 import BaseRadio from './BaseRadio';
 
-export default [BaseInput, BaseRadio];
+const components = [BaseInput, BaseRadio];
+
+const addComponent = (comp) => {
+  components.push(comp);
+};
+
+export { addComponent };
+
+export default components;

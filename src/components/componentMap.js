@@ -12,4 +12,14 @@ const componentMap = {
   }),
 };
 
+// 添加自定义组件
+const addComponent = (type, viewComponent, configComponent) => {
+  componentMap[type] = () => ({
+    viewComponent,
+    configComponent,
+  });
+};
+
+export { addComponent };
+
 export default componentMap;

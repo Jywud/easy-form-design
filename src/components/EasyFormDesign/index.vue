@@ -30,6 +30,7 @@
         v-model="formComponents"
         group="dragComponets"
         animation="300"
+        @add="handleAdd"
       >
         <div
           v-for="(element, index) in formComponents"
@@ -42,7 +43,12 @@
             <span v-if="element.required" style="color: red">*</span>
             <span>{{ element.title }}</span>
           </div>
-          <component :is="element.viewComponent" :compData="element" model="design"></component>
+          <component
+            :is="element.viewComponent"
+            :compData="element"
+            v-model="element.defaultValue"
+            model="design"
+          ></component>
           <div class="form-comp-btns">
             <el-button type="danger" icon="el-icon-delete" circle @click="deleteComp(index)" />
             <el-button
@@ -84,6 +90,9 @@ const getId = () =>
 export default {
   name: 'EasyFormDesign',
   components: { draggable, previewForm },
+  provide: {
+    isPreview: true,
+  },
   data() {
     return {
       componentLib,
@@ -117,7 +126,6 @@ export default {
     handleClone(Com) {
       // eslint-disable-next-line no-new
       const targetObj = new Com({ uuid: getId() });
-      // targetObj.sourceClass = Com;
       this.activeComp = targetObj;
       return targetObj;
     },
@@ -142,7 +150,7 @@ export default {
     /* 表单预览 */
     preViewForm() {
       const formJSON = this.exportForm();
-      this.$refs.previewForm.initForm(formJSON);
+      this.$refs.previewForm.initForm(JSON.parse(JSON.stringify(formJSON)));
     },
     /* 导出表单json */
     exportForm() {
@@ -157,6 +165,8 @@ export default {
 
       return simplyFormJSON;
     },
+    // eslint-disable-next-line no-unused-vars
+    handleAdd(a, b) {},
   },
 };
 </script>
@@ -243,7 +253,7 @@ export default {
 
       &.isActive {
         background-color: #fffaf1;
-        box-shadow: 0 2px 10px 0 rgb(0 0 0 / 10%);
+        box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.2);
 
         .form-comp-btns {
           display: block;

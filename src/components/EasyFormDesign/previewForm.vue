@@ -6,7 +6,11 @@
       :close-on-click-modal="false"
       width="30%"
     >
-      <EasyFormBuild ref="formBuild" @validateSuccess="validateSuccess"></EasyFormBuild>
+      <EasyFormBuild
+        v-if="dialogVisible"
+        ref="formBuild"
+        @validateSuccess="validateSuccess"
+      ></EasyFormBuild>
     </el-dialog>
   </div>
 </template>
@@ -16,6 +20,9 @@ import EasyFormBuild from '../EasyFormBuild/index.vue';
 
 export default {
   name: 'previewForm',
+  provide: {
+    isPreview: false,
+  },
   components: { EasyFormBuild },
   data() {
     return {
@@ -26,7 +33,7 @@ export default {
     initForm(data) {
       this.dialogVisible = true;
       this.$nextTick(() => {
-        this.$refs.formBuild.initDefaultForm(data);
+        this.$refs.formBuild.initForm(data);
       });
     },
     validateSuccess() {},

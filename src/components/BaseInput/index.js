@@ -19,6 +19,7 @@ class BaseInput {
     this.required = required;
     this.disabled = disabled;
     this.placeholder = placeholder;
+    this.maxlength = 100;
 
     this.viewComponent = BaseInputView;
     this.configComponent = BaseInputConfig;

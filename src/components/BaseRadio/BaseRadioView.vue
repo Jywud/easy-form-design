@@ -37,7 +37,7 @@ export default {
   },
   computed: {
     disable() {
-      return this.compData.disabled || this.isPreview;
+      return this.compData.disabled;
     },
     compVal: {
       get() {
