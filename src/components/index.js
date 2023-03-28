@@ -8,4 +8,4 @@ const install = (Vue) => {
 
 export { EasyFormDesign, EasyFormBuild };
 
-export default { install, EasyFormDesign, EasyFormBuild };
+export default { install };

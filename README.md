@@ -24,10 +24,27 @@ pnpm add easy-form-design
 
 ## 使用
 
+> $\color{#FF0000}{使用前请确认已安装配置了 element-ui，vuedraggable}$
+
+> 文档还未完善，先凑活看吧。或者看源码的 EasyFormBuild 和 EasyFormDesign 文件夹下的 index.vue
+
 样式文件需要手动引入, 可以在入口文件引入样式文件
 
+#### 全局注册
+
 ```js
+// main.js
+import Vue from 'vue';
 import 'easy-form-design/lib/easyFormDesign.css';
+import EasyFormDesign from 'easy-form-design';
+
+Vue.use(EasyFormDesign);
+```
+
+#### 局部注册
+
+```js
+import 'easy-form-design/lib/easyFormDesign.css'; // 这个可在项目入口文件引入
 import { EasyFormDesign, EasyFormBuild } from 'easy-form-design';
 
 export default {
@@ -38,6 +55,8 @@ export default {
 };
 ```
 
+#### 使用方法
+
 ```html
 <!-- 表单设计器 -->
 <template>
@@ -47,11 +66,30 @@ export default {
 </template>
 ```
 
+```js
+export default {
+  methods: {
+    /* 初始化已有表单，例如已编辑过表单设计器导出json的，可以用这个方法还原 */
+    initForm() {
+      this.$refs.formDesign.initForm(fromJson); //fromJson导出的json
+    },
+    /* 导出表单json方法 */
+    exportForm() {
+      this.$refs.formDesign.exportForm();
+    },
+    /* 表单预览方法 */
+    preViewForm() {
+      this.$refs.formDesign.preViewForm();
+    },
+  },
+};
+```
+
 ```html
 <!-- 表单构建器 -->
 <template>
   <div>
-    <EasyFormBuild ref="formBuild"></EasyFormBuild>
+    <EasyFormBuild ref="formBuild" @validateSuccess="validateSuccess"></EasyFormBuild>
   </div>
 </template>
 ```
@@ -64,7 +102,13 @@ export default {
       this.$refs.formBuild.initForm(data); //data是表单设计器导出的json
 
       // 给表单构建器的组件设置默认的值
-      this.$refs.formBuild.setFormData(data); //data是组件
+      this.$nextTick(() => {
+        this.$refs.formBuild.setFormData(json); //json是个对象｛组件uuid：默认值，组件uuid：默认值｝
+      });
+    },
+    /* 校验成功 */
+    validateSuccess(ruleForm, formJsonList) {
+      // ruleForm 用户填写的表单值json， formJsonList 原始表单json
     },
   },
 };
