@@ -1,6 +1,6 @@
 {
   "name": "easy-form-design",
-  "version": "0.1.4-beta",
+  "version": "0.2.4-beta",
   "author": "dayu",
   "description": "easy-form-design是一个基于 vue2, element-ui，vuedraggable 的自定义表单设计器",
   "files": [

@@ -150,7 +150,9 @@ export default {
     /* 表单预览 */
     preViewForm() {
       const formJSON = this.exportForm();
-      this.$refs.previewForm.initForm(JSON.parse(JSON.stringify(formJSON)));
+      if (formJSON && formJSON.length > 0) {
+        this.$refs.previewForm.initForm(JSON.parse(JSON.stringify(formJSON)));
+      }
     },
     /* 导出表单json */
     exportForm() {
@@ -159,7 +161,7 @@ export default {
         return config;
       });
 
-      console.log('exportForm: ', simplyFormJSON);
+      // console.log('exportForm: ', simplyFormJSON);
       const strformComponents = JSON.stringify(simplyFormJSON);
       sessionStorage.setItem('exportFormComponents', strformComponents);
 
@@ -233,8 +235,9 @@ export default {
     flex: 1;
     overflow-y: auto;
     padding: 20px 10px;
-    border: 1px solid rgba(0, 0, 0, 0.8);
+    // border: 1px solid rgba(0, 0, 0, 0.8);
     border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0.04);
 
     .form-item-wrap {
       position: relative;

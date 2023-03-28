@@ -45,37 +45,42 @@ export default {
     /* 初始化表单 */
     initFormRender() {
       this.formJsonList.forEach((comp) => {
-        // 设置表单默认值
-        if (comp.defaultValue !== undefined && comp.defaultValue !== '') {
-          try {
-            // eslint-disable-next-line operator-linebreak
-            this.$set(
-              this.ruleForm,
-              comp.uuid,
-              typeof comp.defaultValue === 'object'
-                ? JSON.parse(JSON.stringify(comp.defaultValue))
-                : comp.defaultValue
-            );
-          } catch (error) {
-            console.error(error);
-          }
-        }
-
-        // 设置表单规则
-        if (comp.type === 'BaseInput') {
-          this.formRules[comp.uuid] = [
-            { required: comp.required, message: '请输入', trigger: 'blur' },
-          ];
-        } else if (
-          comp.type === 'BaseRadio' ||
-          comp.type === 'BaseCheckbox' ||
-          comp.type === 'BaseSelect'
-        ) {
-          this.formRules[comp.uuid] = [
-            { required: comp.required, message: '请选择', trigger: 'change' },
-          ];
-        }
+        this.setFormDefaultData(comp);
+        this.setFormRules(comp);
       });
+    },
+    /* 设置表单默认值 */
+    setFormDefaultData(comp) {
+      if (comp.defaultValue !== undefined && comp.defaultValue !== '') {
+        try {
+          // eslint-disable-next-line operator-linebreak
+          this.$set(
+            this.ruleForm,
+            comp.uuid,
+            typeof comp.defaultValue === 'object'
+              ? JSON.parse(JSON.stringify(comp.defaultValue))
+              : comp.defaultValue
+          );
+        } catch (error) {
+          console.error(error);
+        }
+      }
+    },
+    /* 设置表单规则 */
+    setFormRules(comp) {
+      if (comp.type === 'BaseInput') {
+        this.formRules[comp.uuid] = [
+          { required: comp.required, message: '请输入', trigger: 'blur' },
+        ];
+      } else if (
+        comp.type === 'BaseRadio' ||
+        comp.type === 'BaseCheckbox' ||
+        comp.type === 'BaseSelect'
+      ) {
+        this.formRules[comp.uuid] = [
+          { required: comp.required, message: '请选择', trigger: 'change' },
+        ];
+      }
     },
     /* 设置表单数据-父组件调用 */
     setFormData(data) {
@@ -84,7 +89,6 @@ export default {
       Object.keys(this.ruleForm).forEach((key) => {
         if (data[key]) {
           this.$set(this.ruleForm, key, data[key]);
-          // this.ruleForm[key] = data[key];
         }
       });
     },
