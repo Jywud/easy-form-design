@@ -1,6 +1,6 @@
 {
   "name": "easy-form-design",
-  "version": "0.3.2-beta",
+  "version": "0.3.3-beta",
   "author": "dayu",
   "description": "easy-form-design是一个基于 vue2, element-ui，vuedraggable 的自定义表单设计器",
   "files": [
@@ -11,7 +11,7 @@
     "form-design",
     "vue表单设计器"
   ],
-  "main": "lib/easyFormDesign.umd.min.js",
+  "main": "lib/easyFormDesign.umd.js",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build --target lib --name easyFormDesign --dest lib src/components/index.js",
@@ -47,6 +47,7 @@
     "eslint-plugin-vuejs-accessibility": "^1.1.0",
     "less": "^3.13.1",
     "less-loader": "^6.2.0",
+    "uglifyjs-webpack-plugin": "^2.2.0",
     "vue": "^2.7.14",
     "vue-router": "^3.6.5",
     "vue-template-compiler": "^2.6.14",

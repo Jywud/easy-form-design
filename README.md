@@ -55,6 +55,10 @@ export default {
 };
 ```
 
+#### 集成源码
+
+` git 上下载源码，把 src/components 拷贝到自己的项目下，index.js 为入口文件可以通过 Vue.use 的方式注册或者局部注册。`
+
 #### 使用方法
 
 ```html
