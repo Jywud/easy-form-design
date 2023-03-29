@@ -4,6 +4,9 @@
 
 easy-form-design 是一个基于 vue2, element-ui，vuedraggable 的自定义表单设计器。主要功能是能通过简单操作来生成配置表单，生成可保存的 JSON 数据，并能将 JSON 还原成表单，使表单开发更简单更快速。
 
+- [demo 预览](https://jywud314.gitee.io/easy-form-design)
+- [开源地址](https://gitee.com/jywud314/easy-form-design.git)
+
 ## 组件
 
 - EasyFormDesign 表单设计器（基于可视化操作快速设计出表单页面，生成配置 json 或页面）
