@@ -14,6 +14,7 @@ module.exports = {
     'vue/no-mutating-props': 'off',
     'operator-linebreak': 'off',
     'comma-dangle': 'off',
+    'object-curly-newline': 'off',
     // 'max-len': 'off',
   },
 };

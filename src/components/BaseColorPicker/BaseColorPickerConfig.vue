@@ -9,16 +9,9 @@
       <el-input v-model="activeComp.uuid" disabled />
     </div>
     <div class="mt10">
-      <div class="fw600">提示文案：</div>
-      <el-input v-model="activeComp.placeholder" />
-    </div>
-    <div class="mt10">
-      <div class="fw600">最大长度：</div>
-      <el-input v-model="activeComp.maxlength" />
-    </div>
-    <div class="mt10">
       <div class="fw600">默认值：</div>
-      <el-input v-model="activeComp.defaultValue" />
+      <el-color-picker v-model="activeComp.defaultValue"></el-color-picker>
+      <!-- <el-input v-model="activeComp.defaultValue" placeholder="格式为 #000000" /> -->
     </div>
     <div class="mt10">
       <el-checkbox v-model="activeComp.required" label="是否必填" />
@@ -32,8 +25,8 @@ export default {
   props: {
     activeComp: {
       default: () => ({
-        title: '输入框',
-        placeholder: '请输入',
+        title: '颜色选择框',
+        placeholder: '请选择',
         required: false,
         disabled: false,
       }),

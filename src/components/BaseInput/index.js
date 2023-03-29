@@ -1,9 +1,9 @@
 import BaseInputView from './BaseInputView.vue';
 import BaseInputConfig from './BaseInputConfig.vue';
 
-/* 基本输入框 */
+/* 单行输入框 */
 class BaseInput {
-  static comName = '单行文本输入框';
+  static comName = '单行输入框';
 
   constructor({
     uuid = '',
@@ -13,7 +13,7 @@ class BaseInput {
     placeholder = '请输入',
   }) {
     this.type = 'BaseInput';
-    this.title = '单行文本输入框';
+    this.title = '单行输入框';
     this.uuid = uuid;
     this.defaultValue = defaultValue;
     this.required = required;

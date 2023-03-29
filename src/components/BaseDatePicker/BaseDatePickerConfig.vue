@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="mt10">
-      <div class="fw600">标题：</div>
+      <div class="mb10 fw600">标题：</div>
       <el-input v-model="activeComp.title" />
     </div>
     <div class="mt10">
@@ -9,16 +9,14 @@
       <el-input v-model="activeComp.uuid" disabled />
     </div>
     <div class="mt10">
-      <div class="fw600">提示文案：</div>
-      <el-input v-model="activeComp.placeholder" />
-    </div>
-    <div class="mt10">
-      <div class="fw600">最大长度：</div>
-      <el-input v-model="activeComp.maxlength" />
-    </div>
-    <div class="mt10">
       <div class="fw600">默认值：</div>
-      <el-input v-model="activeComp.defaultValue" />
+      <el-date-picker
+        v-model="activeComp.defaultValue"
+        value-format="yyyy-MM-dd"
+        type="date"
+        placeholder="选择日期"
+      >
+      </el-date-picker>
     </div>
     <div class="mt10">
       <el-checkbox v-model="activeComp.required" label="是否必填" />
@@ -28,17 +26,17 @@
 </template>
 <script>
 export default {
-  name: 'BaseInputConfig',
+  name: 'BaseDatePickerConfig',
   props: {
     activeComp: {
-      default: () => ({
-        title: '输入框',
-        placeholder: '请输入',
-        required: false,
-        disabled: false,
-      }),
+      type: Object,
+      default: () => ({}),
     },
   },
+  data() {
+    return {};
+  },
+  methods: {},
 };
 </script>
 <style lang="less" scoped>
@@ -60,5 +58,10 @@ export default {
 
 .fw600 {
   font-weight: 600;
+}
+.tip-box {
+  color: #fff;
+  padding: 5px;
+  background-color: #e6a23c;
 }
 </style>

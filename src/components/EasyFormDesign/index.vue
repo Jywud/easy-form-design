@@ -202,6 +202,7 @@ export default {
       height: 32px;
       line-height: 32px;
       background-color: #f4f6fc;
+      border: 1px solid #f4f6fc;
       color: #333;
       margin-bottom: 10px;
       cursor: move;
@@ -211,8 +212,9 @@ export default {
       margin-right: 5px;
 
       &:hover {
-        border: 1px dashed #0070ff;
+        // border: 1px dashed #0070ff;
         color: #0070ff;
+        box-shadow: 0 1px 6px #0070ff;
       }
     }
   }

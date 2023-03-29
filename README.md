@@ -27,7 +27,7 @@ pnpm add easy-form-design
 
 ## 使用
 
-> $\color{#FF0000}{使用前请确认已安装配置了 element-ui，vuedraggable}$
+> <font color= "#FF0000">使用前请确认已安装配置了 element-ui，vuedraggable</font>
 
 > 文档还未完善，先凑活看吧。或者看源码的 EasyFormBuild 和 EasyFormDesign 文件夹下的 index.vue
 

@@ -68,19 +68,25 @@ export default {
     },
     /* 设置表单规则 */
     setFormRules(comp) {
-      if (comp.type === 'BaseInput') {
+      if (comp.type === 'BaseInput' || comp.type === 'BaseTextarea') {
         this.formRules[comp.uuid] = [
           { required: comp.required, message: '请输入', trigger: 'blur' },
         ];
-      } else if (
-        comp.type === 'BaseRadio' ||
-        comp.type === 'BaseCheckbox' ||
-        comp.type === 'BaseSelect'
-      ) {
+      } else {
         this.formRules[comp.uuid] = [
           { required: comp.required, message: '请选择', trigger: 'change' },
         ];
       }
+      //  else if (
+      //   comp.type === 'BaseRadio' ||
+      //   comp.type === 'BaseCheckbox' ||
+      //   comp.type === 'BaseSelect' ||
+      //   comp.type === 'BaseColorPicker'
+      // ) {
+      //   this.formRules[comp.uuid] = [
+      //     { required: comp.required, message: '请选择', trigger: 'change' },
+      //   ];
+      // }
     },
     /* 设置表单数据-父组件调用 */
     setFormData(data) {
@@ -100,12 +106,12 @@ export default {
 
         formRef.validate((valid, fields) => {
           if (valid) {
-            // console.log(
-            //   'submit!===ruleForm: ',
-            //   this.ruleForm,
-            //   '======formJsonList: ',
-            //   this.formJsonList
-            // );
+            console.log(
+              'submit!===ruleForm: ',
+              this.ruleForm,
+              '======formJsonList: ',
+              this.formJsonList
+            );
             this.$emit('validateSuccess', this.ruleForm, this.formJsonList, fields);
             resolve(this.ruleForm, this.formJsonList);
           } else {

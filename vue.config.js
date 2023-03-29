@@ -15,20 +15,22 @@ module.exports = defineConfig({
   },
   configureWebpack: (config) => {
     /* 代码压缩 */
-    config.plugins.push(
-      new UglifyJsPlugin({
-        uglifyOptions: {
-          // 自动删除console
-          compress: {
-            // warnings: false, // 若打包错误，则注释这行
-            drop_debugger: true,
-            drop_console: true,
-            pure_funcs: ['console.log'],
+    if (process.env.NODE_ENV === 'production') {
+      config.plugins.push(
+        new UglifyJsPlugin({
+          uglifyOptions: {
+            // 自动删除console
+            compress: {
+              // warnings: false, // 若打包错误，则注释这行
+              drop_debugger: true,
+              drop_console: true,
+              pure_funcs: ['console.log'],
+            },
           },
-        },
-        sourceMap: false,
-        parallel: true,
-      })
-    );
+          sourceMap: false,
+          parallel: true,
+        })
+      );
+    }
   },
 });

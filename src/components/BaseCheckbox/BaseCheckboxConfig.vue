@@ -5,7 +5,7 @@
       <el-input v-model="activeComp.title" />
     </div>
     <div class="mt10">
-      <div class="fontw">组件唯一值（uuid）：</div>
+      <div class="fw600">组件唯一值（uuid）：</div>
       <el-input v-model="activeComp.uuid" disabled />
     </div>
     <div class="mt10">
@@ -26,7 +26,7 @@
       <el-button type="primary" @click="addOption">添加选项</el-button>
     </div>
     <!-- <div class="mt10">
-      <div class="fontw">默认值：</div>
+      <div class="fw600">默认值：</div>
       <el-radio-group v-model="activeComp.defaultValue">
         <el-radio :label="item.value" v-for="item in activeComp.options" :key="item.value">{{
           item.name
