@@ -110,6 +110,18 @@ export default {
     validateSuccess(ruleForm, formJsonList) {
       // ruleForm 用户填写的表单值json， formJsonList 原始表单json
     },
+    /* 表单重置 */
+    resetForm() {
+      this.$refs.formBuild.resetForm();
+    },
   },
 };
 ```
+
+### EasyFormDesign slot
+
+formBtns - 表单设计器按钮组区域（默认展示按钮 预览表单、导出 JSON）
+
+### EasyFormBuild slot
+
+btns - 表单构造器按钮组（默认展示按钮 表单校验、表单重置按钮）
