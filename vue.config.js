@@ -9,6 +9,7 @@ function resolve(dir) {
 module.exports = defineConfig({
   transpileDependencies: true,
   productionSourceMap: false,
+  publicPath: './',
   chainWebpack: (config) => {
     config.resolve.alias.set('@', resolve('./src')).set('components', resolve('./src/components'));
   },
