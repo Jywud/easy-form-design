@@ -1,6 +1,7 @@
 import { BaseInputView, BaseInputConfig } from './BaseInput';
 import { BaseRadioView, BaseRadioConfig } from './BaseRadio';
 import { BaseCheckboxView, BaseCheckboxConfig } from './BaseCheckbox';
+import { BaseSelectView, BaseSelectConfig } from './BaseSelect';
 
 const componentMap = {
   BaseInput: () => ({
@@ -14,6 +15,10 @@ const componentMap = {
   BaseCheckbox: () => ({
     viewComponent: BaseCheckboxView,
     configComponent: BaseCheckboxConfig,
+  }),
+  BaseSelect: () => ({
+    viewComponent: BaseSelectView,
+    configComponent: BaseSelectConfig,
   }),
 };
 

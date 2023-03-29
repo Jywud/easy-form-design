@@ -100,16 +100,16 @@ export default {
 
         formRef.validate((valid, fields) => {
           if (valid) {
-            console.log(
-              'submit!===ruleForm: ',
-              this.ruleForm,
-              '======formJsonList: ',
-              this.formJsonList
-            );
-            this.$emit('validateSuccess', this.ruleForm, this.formJsonList);
+            // console.log(
+            //   'submit!===ruleForm: ',
+            //   this.ruleForm,
+            //   '======formJsonList: ',
+            //   this.formJsonList
+            // );
+            this.$emit('validateSuccess', this.ruleForm, this.formJsonList, fields);
             resolve(this.ruleForm, this.formJsonList);
           } else {
-            console.log('error submit!', fields);
+            // console.log('error submit!', fields);
             reject();
           }
         });

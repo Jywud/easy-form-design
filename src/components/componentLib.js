@@ -2,8 +2,9 @@
 import BaseInput from './BaseInput';
 import BaseRadio from './BaseRadio';
 import BaseCheckbox from './BaseCheckbox';
+import BaseSelect from './BaseSelect';
 
-const components = [BaseInput, BaseRadio, BaseCheckbox];
+const components = [BaseInput, BaseRadio, BaseCheckbox, BaseSelect];
 
 const addComponent = (comp) => {
   components.push(comp);

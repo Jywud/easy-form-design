@@ -1,14 +1,23 @@
 <template>
-  <el-checkbox-group v-model="compVal" :disabled="compData.disabled">
-    <el-checkbox :label="item.value" v-for="item in compData.options" :key="item.value">{{
-      item.name
-    }}</el-checkbox>
-  </el-checkbox-group>
+  <el-select
+    v-model="compVal"
+    placeholder="请选择"
+    clearable
+    :disabled="compData.disabled"
+    style="width: 100%"
+  >
+    <el-option
+      :label="item.name"
+      :value="item.value"
+      v-for="item in compData.options"
+      :key="item.value"
+    ></el-option>
+  </el-select>
 </template>
 
 <script>
 export default {
-  name: 'BaseCheckboxView',
+  name: 'BaseSelectView',
   model: {
     prop: 'modelValue',
     event: 'change',
@@ -27,8 +36,8 @@ export default {
       default: () => ({ disabled: false, placeholder: '请选择' }),
     },
     modelValue: {
-      type: Array,
-      default: () => [],
+      type: String,
+      default: () => '',
     },
   },
   data() {
