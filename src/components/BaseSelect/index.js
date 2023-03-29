@@ -7,7 +7,7 @@ class BaseSelect {
 
   constructor({
     uuid = '',
-    defaultValue = [],
+    defaultValue = '',
     required = false,
     disabled = false,
     placeholder = '请选择',
