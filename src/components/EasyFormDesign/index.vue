@@ -38,7 +38,7 @@
           v-for="(element, index) in formComponents"
           :key="element.uuid"
           class="form-item-wrap"
-          :class="{ isActive: activeComp.uuid === element.uuid }"
+          :class="{ isActive: activeComp && activeComp.uuid === element.uuid }"
           @click="selectComp(element)"
         >
           <div class="form-title-bar">
@@ -62,6 +62,9 @@
           </div>
         </div>
       </draggable>
+      <div v-if="formComponents.length === 0" class="draggable-noData">
+        <NoData text="从左侧拖拽一个组件添加"></NoData>
+      </div>
     </div>
     <div class="component-config-container">
       <h3>组件配置</h3>
@@ -71,6 +74,9 @@
           :is="activeComp.configComponent"
           :activeComp="activeComp"
         ></component>
+        <div v-else class="noData">
+          <NoData text="请选择一个组件来设置属性" width="120" height="100"></NoData>
+        </div>
       </div>
     </div>
     <previewForm ref="previewForm"></previewForm>
@@ -81,6 +87,7 @@
 import draggable from 'vuedraggable';
 import { componentMap, getAllWidgetTypes, getWidgetListByTypes } from '../componentConfig';
 import previewForm from './previewForm.vue';
+import NoData from '../assets/NoData.vue';
 // 获取唯一的组件id
 const getId = () =>
   // eslint-disable-next-line implicit-arrow-linebreak
@@ -90,7 +97,7 @@ const getId = () =>
     .substring(5)}`;
 export default {
   name: 'EasyFormDesign',
-  components: { draggable, previewForm },
+  components: { draggable, previewForm, NoData },
   provide: {
     isPreview: true,
   },
@@ -154,6 +161,11 @@ export default {
         setTimeout(() => {
           this.activeComp = this.formComponents[index - 1];
         });
+      } else if (this.formComponents.length === 0) {
+        this.activeComp = null;
+      } else {
+        // eslint-disable-next-line prefer-destructuring
+        this.activeComp = this.formComponents[0];
       }
     },
     /* 克隆组件 */
@@ -183,7 +195,9 @@ export default {
       return simplyFormJSON;
     },
     // eslint-disable-next-line no-unused-vars
-    handleAdd(a, b) {},
+    handleAdd(a, b) {
+      // debugger;
+    },
   },
 };
 </script>
@@ -236,6 +250,7 @@ export default {
 }
 
 .form-design-container {
+  position: relative;
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -281,6 +296,13 @@ export default {
       }
     }
   }
+
+  .draggable-noData {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
 }
 
 .component-config-container {
@@ -289,5 +311,9 @@ export default {
   width: 400px;
   padding: 10px;
   background-color: #fff;
+  .noData {
+    margin-top: 120px;
+    text-align: center;
+  }
 }
 </style>
