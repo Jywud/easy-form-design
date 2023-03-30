@@ -12,6 +12,11 @@ export default {
   components: {
     EasyFormDesign,
   },
+  data() {
+    return {
+      compTypes: ['BaseInput'],
+    };
+  },
   mounted() {
     const formComponents = sessionStorage.getItem('exportFormComponents');
     if (formComponents) {

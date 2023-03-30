@@ -22,7 +22,9 @@
       <div class="form-btns-panel">
         <slot name="formBtns">
           <el-button type="success" size="mini" @click="preViewForm">预览表单</el-button>
-          <el-button type="primary" size="mini" @click="exportForm">导出JSON</el-button>
+          <el-button type="primary" size="mini" @click="exportForm('saveToSession')"
+            >导出JSON</el-button
+          >
         </slot>
       </div>
       <draggable
@@ -77,8 +79,7 @@
 
 <script>
 import draggable from 'vuedraggable';
-import componentLib from '../componentLib';
-import componentMap from '../componentMap';
+import { componentMap, getAllWidgetTypes, getWidgetListByTypes } from '../componentConfig';
 import previewForm from './previewForm.vue';
 // 获取唯一的组件id
 const getId = () =>
@@ -93,12 +94,25 @@ export default {
   provide: {
     isPreview: true,
   },
+  props: {
+    fields: {
+      type: Array,
+      default: () => getAllWidgetTypes(),
+    },
+  },
   data() {
     return {
-      componentLib,
       formComponents: [],
       activeComp: null,
     };
+  },
+  computed: {
+    componentLib() {
+      if (this.fields.length === 0) {
+        return [];
+      }
+      return getWidgetListByTypes(this.fields);
+    },
   },
   // mounted() {
   //   const formComponents = sessionStorage.getItem('exportFormComponents');
@@ -155,15 +169,16 @@ export default {
       }
     },
     /* 导出表单json */
-    exportForm() {
+    exportForm(type) {
       const simplyFormJSON = this.formComponents.map((comp) => {
         const { configComponent, viewComponent, ...config } = comp;
         return config;
       });
 
-      // console.log('exportForm: ', simplyFormJSON);
-      const strformComponents = JSON.stringify(simplyFormJSON);
-      sessionStorage.setItem('exportFormComponents', strformComponents);
+      if (type === 'saveToSession') {
+        const strformComponents = JSON.stringify(simplyFormJSON);
+        sessionStorage.setItem('exportFormComponents', strformComponents);
+      }
 
       return simplyFormJSON;
     },

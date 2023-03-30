@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import componentMap from '../componentMap';
+import { componentMap } from '../componentConfig';
 
 export default {
   name: 'EasyFormBuild',
@@ -51,7 +51,7 @@ export default {
     },
     /* 设置表单默认值 */
     setFormDefaultData(comp) {
-      if (comp.defaultValue !== undefined && comp.defaultValue !== '') {
+      if (comp.defaultValue !== undefined) {
         try {
           // eslint-disable-next-line operator-linebreak
           this.$set(
@@ -112,7 +112,11 @@ export default {
               '======formJsonList: ',
               this.formJsonList
             );
-            this.$emit('validateSuccess', this.ruleForm, this.formJsonList, fields);
+            this.$emit('validateSuccess', {
+              ruleForm: this.ruleForm,
+              formJsonList: this.formJsonList,
+              fields,
+            });
             resolve(this.ruleForm, this.formJsonList);
           } else {
             // console.log('error submit!', fields);

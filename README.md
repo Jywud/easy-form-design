@@ -27,11 +27,9 @@ pnpm add easy-form-design
 
 ## 使用
 
-> <font color= "#FF0000">使用前请确认已安装配置了 element-ui，vuedraggable</font>
+> <font color= "#FF0000">使用前请确认已安装配置了 element-ui</font>
 
-> 文档还未完善，先凑活看吧。或者看源码的 EasyFormBuild 和 EasyFormDesign 文件夹下的 index.vue
-
-样式文件需要手动引入, 可以在入口文件引入样式文件
+> 文档还未完善，先凑活看吧。或者看源码的 EasyFormBuild 和 EasyFormDesign 文件夹
 
 #### 全局注册
 
@@ -125,10 +123,47 @@ export default {
 };
 ```
 
-### EasyFormDesign slot
+### EasyFormDesign
 
-formBtns - 表单设计器按钮组区域（默认展示按钮 预览表单、导出 JSON）
+#### props
 
-### EasyFormBuild slot
+| 参数   | 类型  | 默认值                                                                                                                                          |        说明        |
+| :----- | :---- | :---------------------------------------------------------------------------------------------------------------------------------------------- | :----------------: |
+| fields | Array | 全部组件 - ['BaseInput', 'BaseTextarea', 'BaseRadio', 'BaseCheckbox', 'BaseSelect', 'BaseColorPicker', 'BaseDatePicker', 'BaseDateRangePicker'] | 自定义左侧控件列表 |
 
-btns - 表单构造器按钮组（默认展示按钮 表单校验、表单重置按钮）
+#### Methods
+
+| 名称        | 说明       | 入参          |  回调参数 |
+| :---------- | :--------- | :------------ | --------: |
+| exportForm  | 导出 JSON  | -             | JSON 数组 |
+| preViewForm | 表单预览   | -             |         - |
+| initForm    | 初始化表单 | Array or 不传 |         - |
+
+#### Attributes
+
+| 名称     |                                                     说明 |
+| :------- | -------------------------------------------------------: |
+| formBtns | 表单设计器按钮组区域（默认展示按钮 预览表单、导出 JSON） |
+
+### EasyFormBuild
+
+#### Events
+
+| 名称            | 说明             | 回调参数 |
+| :-------------- | :--------------- | -------: |
+| validateSuccess | 表单校验成功回调 |   Object |
+
+#### Methods
+
+| 名称         | 说明       | 入参                        | 回调参数 |
+| :----------- | :--------- | :-------------------------- | -------: |
+| validateForm | 表单校验   | -                           |   Object |
+| resetForm    | 表单重置   | -                           |        - |
+| initForm     | 初始化表单 | 表单 JSON                   |        - |
+| setFormData  | 设置表单值 | JSON （{组件 uuid: value}） |        - |
+
+#### slots
+
+| 名称 |                                                    说明 |
+| :--- | ------------------------------------------------------: |
+| btns | 表单构造器按钮组（默认展示按钮 表单校验、表单重置按钮） |
