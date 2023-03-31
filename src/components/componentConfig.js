@@ -1,3 +1,8 @@
+/*
+ * @Author: jiutian
+ * @Date: 2023-03-31 09:40:47
+ * @LastEditTime: 2023-03-31 10:13:39
+ */
 import BaseInput, { BaseInputView, BaseInputConfig } from './BaseInput';
 import BaseTextarea, { BaseTextareaView, BaseTextareaConfig } from './BaseTextarea';
 import BaseRadio, { BaseRadioView, BaseRadioConfig } from './BaseRadio';
@@ -9,6 +14,7 @@ import BaseDateRangePicker, {
   BaseDateRangePickerView,
   BaseDateRangePickerConfig,
 } from './BaseDateRangePicker';
+import BaseInputNumber, { BaseInputNumberConfig, BaseInputNumberView } from './BaseInputNumber';
 
 const componentMap = {
   BaseInput: () => ({
@@ -50,6 +56,11 @@ const componentMap = {
     widget: BaseDateRangePicker,
     viewComponent: BaseDateRangePickerView,
     configComponent: BaseDateRangePickerConfig,
+  }),
+  BaseInputNumber: () => ({
+    widget: BaseInputNumber,
+    viewComponent: BaseInputNumberView,
+    configComponent: BaseInputNumberConfig,
   }),
 };
 
