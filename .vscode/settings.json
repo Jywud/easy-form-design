@@ -32,5 +32,5 @@
   "prettier.enable": true,
   "prettier.printWidth": 100,
   "prettier.singleQuote": true,
-  "files.eol": "\n"
+  "files.eol": "auto"
 }

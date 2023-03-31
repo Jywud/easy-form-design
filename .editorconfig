@@ -1,8 +1,13 @@
-[*.{js,jsx,ts,tsx,vue}]
+root = true
+[*]
 charset = utf-8
+#可选项tab和space，缩进样式
 indent_style = space
 indent_size = 2
-end_of_line = lf
+# 设置换行符号，可选值 'lf' 'cr' 'crlf'
+end_of_line = crlf
+# 删除每一行结尾的空白字符,可选值 'true' 或者 'false'
 trim_trailing_whitespace = true
+#每个文件结尾是否包含一个空行
 insert_final_newline = true
 max_line_length = 100
