@@ -1,12 +1,7 @@
-<!--
- * @Author: jiutian
- * @Date: 2023-03-31 10:06:51
- * @LastEditTime: 2023-03-31 14:28:09
--->
 <template>
   <div>
     <el-input-number
-      v-model="compData.defaultValue"
+      v-model="compVal"
       :min="compData.min"
       :max="compData.max"
       :disabled="disable"

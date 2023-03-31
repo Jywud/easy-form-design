@@ -1,8 +1,3 @@
-/*
- * @Author: jiutian
- * @Date: 2023-03-31 10:06:55
- * @LastEditTime: 2023-03-31 14:22:23
- */
 import BaseInputNumberConfig from './BaseInputNumberConfig.vue';
 import BaseInputNumberView from './BaseInputNumberView.vue';
 

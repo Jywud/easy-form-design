@@ -1,8 +1,3 @@
-<!--
- * @Author: jiutian
- * @Date: 2023-03-31 10:06:40
- * @LastEditTime: 2023-03-31 14:36:39
--->
 <template>
   <div>
     <div class="mt10">
